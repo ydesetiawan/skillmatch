@@ -1,0 +1,111 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="create-table-category" author="edysetiawan">
+        <createTable tableName="category">
+            <column name="id" autoIncrement="true" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_deleted" type="BOOLEAN" defaultValueBoolean="false">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <createIndex tableName="category"
+                     indexName="IDX_Category_1">
+            <column name="name"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="create-table-question" author="edysetiawan">
+        <createTable tableName="question">
+            <column name="id" autoIncrement="true" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="category_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="question_text" type="VARCHAR(1000)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="question_a" type="VARCHAR(1000)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="question_b" type="VARCHAR(1000)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="question_c" type="VARCHAR(1000)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="question_d" type="VARCHAR(1000)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="value_a" type="INT(11)" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="value_b" type="INT(11)" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="value_c" type="INT(11)" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="value_d" type="INT(11)" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_deleted" type="BOOLEAN" defaultValueBoolean="false">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="category_id"
+                                 baseTableName="question" constraintName="FK_Question_and_Category"
+                                 deferrable="false" initiallyDeferred="false" onDelete="NO ACTION"
+                                 onUpdate="NO ACTION" referencedColumnNames="id"
+                                 referencedTableName="category"/>
+        <createIndex tableName="question"
+                     indexName="IDX_Category_1">
+            <column name="question_text"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="create-table-answer" author="edysetiawan">
+        <createTable tableName="answer">
+            <column name="id" autoIncrement="true" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="question_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="choice_answer" type="VARCHAR(2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="value" type="INT(11)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_deleted" type="BOOLEAN" defaultValueBoolean="false">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="answer" constraintName="FK_Answer_And_User"
+                                 deferrable="false" initiallyDeferred="false" onDelete="NO ACTION"
+                                 onUpdate="NO ACTION" referencedColumnNames="id"
+                                 referencedTableName="user"/>
+        <addForeignKeyConstraint baseColumnNames="question_id"
+                                 baseTableName="answer" constraintName="FK_Answer_And_Question"
+                                 deferrable="false" initiallyDeferred="false" onDelete="NO ACTION"
+                                 onUpdate="NO ACTION" referencedColumnNames="id"
+                                 referencedTableName="question"/>
+    </changeSet>
+
+
+</databaseChangeLog>
