@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            box-sizing: border-box;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        span {
+            color: red;
+            font-size: 12px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<br>
+<br>
+
+<form th:action="@{'/admin/user/add'}" th:object="${cmd}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+    <h2>User Registration Form</h2>
+    <div>
+        <ul th:if="${result!=null AND result.hasErrors()}">
+            <li th:each="err : ${result.getFieldErrors('idNullWhenEdit')}" th:text="${err.defaultMessage}"
+                class="error text-danger"/>
+        </ul>
+    </div>
+    <div>
+        <label for="username">Username:</label>
+        <input type="text" id="username" th:field="*{username}" required/>
+        <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
+    </div>
+
+    <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" th:field="*{password}" required/>
+        <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+    </div>
+
+    <div>
+        <label for="registerId">ID Pendaftar:</label>
+        <input type="text" id="registerId" th:field="*{registerId}" required/>
+        <span th:if="${#fields.hasErrors('registerId')}" th:errors="*{registerId}"></span>
+    </div>
+
+    <div>
+        <label for="name">Nama:</label>
+        <input type="text" id="name" th:field="*{name}" required/>
+        <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+    </div>
+
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" th:field="*{email}" required/>
+        <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+    </div>
+
+    <div>
+        <label for="gender">Jenis Kelamin:</label>
+        <input type="text" id="gender" th:field="*{gender}" required/>
+        <span th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></span>
+    </div>
+
+    <div>
+        <label for="address">Alamat:</label>
+        <input type="text" id="address" th:field="*{address}" required/>
+        <span th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></span>
+    </div>
+
+    <div>
+        <label for="phone">No. Telp:</label>
+        <input type="text" id="phone" th:field="*{phone}" required/>
+        <span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></span>
+    </div>
+
+    <div>
+        <label for="placeOfBirth">Tempat Tanggal Lahir:</label>
+        <input type="text" id="placeOfBirth" th:field="*{placeOfBirth}" required/>
+        <span th:if="${#fields.hasErrors('placeOfBirth')}" th:errors="*{placeOfBirth}"></span>
+    </div>
+
+    <div>
+        <label for="dateOfBirth">Tanggal Lahir:</label>
+        <input type="text" id="dateOfBirth" th:field="*{dateOfBirth}" required/>
+        <span th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}"></span>
+    </div>
+
+    <div>
+        <label for="education">Pendidikan:</label>
+        <input type="text" id="education" th:field="*{education}"/>
+        <span th:if="${#fields.hasErrors('education')}" th:errors="*{education}"></span>
+    </div>
+
+    <div>
+        <label for="univ">Universitas:</label>
+        <input type="text" id="univ" th:field="*{univ}"/>
+        <span th:if="${#fields.hasErrors('univ')}" th:errors="*{univ}"></span>
+    </div>
+
+    <div>
+        <label for="ipk">IPK:</label>
+        <input type="text" id="ipk" th:field="*{ipk}"/>
+        <span th:if="${#fields.hasErrors('ipk')}" th:errors="*{ipk}"></span>
+    </div>
+
+    <div>
+        <label for="noIjazah">No. Ijazah:</label>
+        <input type="text" id="noIjazah" th:field="*{noIjazah}"/>
+        <span th:if="${#fields.hasErrors('noIjazah')}" th:errors="*{noIjazah}"></span>
+    </div>
+
+    <div>
+        <button type="submit">Submit</button>
+    </div>
+</form>
+
+</body>
+</html>

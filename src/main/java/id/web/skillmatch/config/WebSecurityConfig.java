@@ -1,6 +1,6 @@
 package id.web.skillmatch.config;
 
-import id.web.skillmatch.usecase.user.AuthenticationUserUseCase;
+import id.web.skillmatch.usecase.authentication.AuthenticationUserUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -32,7 +32,7 @@ public class WebSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             .authorizeHttpRequests((requests) -> requests
-                .requestMatchers("/", "/home").permitAll()
+                .requestMatchers("/", "/admin/**").permitAll()
                 .anyRequest().authenticated()
             )
             .formLogin((form) -> form

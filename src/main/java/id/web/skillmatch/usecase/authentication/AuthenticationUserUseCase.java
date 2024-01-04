@@ -1,6 +1,6 @@
-package id.web.skillmatch.usecase.user;
+package id.web.skillmatch.usecase.authentication;
 
-import id.web.skillmatch.gateway.user.UserQueryGateway;
+import id.web.skillmatch.gateway.user.query.UserQueryGateway;
 import id.web.skillmatch.model.user.User;
 import id.web.skillmatch.model.user.UserDetails;
 import id.web.skillmatch.model.user.UserInfo;
@@ -53,7 +53,7 @@ public class AuthenticationUserUseCase implements AuthenticationProvider {
     private UserDetails buildUserForAuthentication(User user,
                                                    Set<GrantedAuthority> authorities) {
         return new UserDetails(UserInfo.valueOf(user), user.getUsername(), user.getPassword(), authorities,
-            user.isActiveFlag());
+            !user.isDeleted());
     }
 
     private Set<GrantedAuthority> buildUserAuthority() {
