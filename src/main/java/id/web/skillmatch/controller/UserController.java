@@ -1,7 +1,7 @@
 package id.web.skillmatch.controller;
 
 import id.web.skillmatch.dto.request.SaveUserCmd;
-import id.web.skillmatch.usecase.saveuser.SaveUser;
+import id.web.skillmatch.usecase.user.saveuser.SaveUser;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

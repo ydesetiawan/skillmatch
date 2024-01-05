@@ -1,5 +1,6 @@
 package id.web.skillmatch.model.category;
 
+import id.web.skillmatch.dto.request.SaveCategoryCmd;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -26,5 +27,13 @@ public class Category implements Serializable {
 
     @Column(nullable = false, name = "is_deleted")
     private boolean deleted;
+
+    public static Category valueOf(SaveCategoryCmd cmd) {
+        return Category.builder()
+            .id(cmd.getId())
+            .name(cmd.getName())
+            .description(cmd.getDescription())
+            .build();
+    }
 
 }

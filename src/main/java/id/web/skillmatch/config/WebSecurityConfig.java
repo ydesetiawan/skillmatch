@@ -1,6 +1,6 @@
 package id.web.skillmatch.config;
 
-import id.web.skillmatch.usecase.authentication.AuthenticationUserUseCase;
+import id.web.skillmatch.usecase.user.authentication.AuthenticationUserUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

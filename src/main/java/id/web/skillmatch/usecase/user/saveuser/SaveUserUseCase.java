@@ -1,4 +1,4 @@
-package id.web.skillmatch.usecase.saveuser;
+package id.web.skillmatch.usecase.user.saveuser;
 
 import id.web.skillmatch.controller.ActionType;
 import id.web.skillmatch.dto.request.SaveUserCmd;

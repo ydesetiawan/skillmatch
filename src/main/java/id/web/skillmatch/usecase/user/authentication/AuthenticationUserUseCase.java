@@ -1,4 +1,4 @@
-package id.web.skillmatch.usecase.authentication;
+package id.web.skillmatch.usecase.user.authentication;
 
 import id.web.skillmatch.gateway.user.query.UserQueryGateway;
 import id.web.skillmatch.model.user.User;
